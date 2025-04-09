@@ -1,4 +1,12 @@
 services:
+  frontend:
+    build:
+      context: ./frontend
+    container_name: makeup_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
   backend:
     build:
       context: ./backend
@@ -10,7 +18,7 @@ services:
       - backend/.env
     volumes:
       - ./backend:/app
-    depends_on:  # ✅ FIXED: properly indented
+    depends_on:
       db:
         condition: service_healthy
 
