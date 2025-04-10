@@ -8,3 +8,11 @@ export const fetchMarcas = async () => {
   }
   return response.json();
 };
+
+export const fetchProdutosPorMarca = async (marcaId) => {
+  const response = await fetch(`${API_URL}/api/v1/produto/marca/${marcaId}`);
+  if (!response.ok) {
+    throw new Error('Erro ao buscar produtos');
+  }
+  return response.json();
+};

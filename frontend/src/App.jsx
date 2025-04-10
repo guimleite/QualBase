@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import MarcaDropdown from './components/MarcaDropdown';
+import ProdutoDropdown from './components/ProdutoDropdownx';
 
 function App() {
+  const [marcaSelecionada, setMarcaSelecionada] = useState('');
+
   return (
     <div className="min-h-screen bg-white text-gray-800 font-sans flex flex-col">
       {/* Cabeçalho */}
@@ -11,7 +15,6 @@ function App() {
         </button>
       </header>
 
-      {/* Conteúdo centralizado */}
       <main className="flex-grow flex flex-col items-center justify-start pt-[12vh] px-4">
         <div className="max-w-xl w-full text-center">
           <h1 className="text-4xl font-bold mb-6 leading-tight">
@@ -29,10 +32,11 @@ function App() {
               Escolha uma marca de maquiagem que você já usa:
             </p>
             <div className="flex justify-center">
-              <MarcaDropdown />
+              <MarcaDropdown onChange={setMarcaSelecionada} />
             </div>
-          </div>
 
+            <ProdutoDropdown marcaId={marcaSelecionada} />
+          </div>
         </div>
       </main>
     </div>
